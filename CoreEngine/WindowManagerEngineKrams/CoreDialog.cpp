@@ -87,10 +87,18 @@ string CCoreDialog::promt(string windowCaption, string message)
 	string tmp = "";
 	bool shiftIndicator = false;
 	bool characterDelete = false;
+	int mouseX = 0;
+	int mouseY = 0;
 	while (!quitEvent)
 	{
 		while (SDL_PollEvent(&ev) != 0)
 		{
+			if (ev.type == SDL_MOUSEMOTION)
+			{
+				mouseX = ev.motion.x;
+				mouseY = ev.motion.y;
+
+			}
 			//Handle mouebutton click
 			if (ev.type == SDL_MOUSEBUTTONDOWN)
 			{
@@ -141,7 +149,7 @@ string CCoreDialog::promt(string windowCaption, string message)
 						if (tmp.length() > 0)
 						{
 							tmp.pop_back();
-							PosSize.w -= 20;
+							PosSize.w -= 10;
 						}
 						characterDelete = false;
 					}
@@ -151,31 +159,50 @@ string CCoreDialog::promt(string windowCaption, string message)
 						if (tmp.length() < MAX_INPUT_LENGHT)
 						{
 							tmp += key;
+							PosSize.w += 10;
 						}
 					}
 					//Limiting the lenght of the input
-					if (tmp.length() < MAX_INPUT_LENGHT)
-					{
-						//Rendering Background
-						renderSurface = SDL_LoadBMP("dialog.bmp");
-						renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
-						SDL_FreeSurface(renderSurface);
-						SDL_RenderCopy(renderer, renderTexture, NULL, &BGSize);
-						//rendering WindowText
-						renderSurface = TTF_RenderText_Blended(font, message.c_str(), textColor);
-						renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
-						SDL_FreeSurface(renderSurface);
-						SDL_RenderCopy(renderer, renderTexture, NULL, &WindowTextPosSize);
-						//Rendering user input
-
-						renderSurface = TTF_RenderText_Blended(font, tmp.c_str(), textColor);
-						renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
-						SDL_FreeSurface(renderSurface);
-						SDL_RenderCopy(renderer, renderTexture, NULL, &PosSize);
-						PosSize.w += 10;
-						SDL_RenderPresent(renderer);
-					}
 				}
+
+
+				}
+			if (tmp.length() < MAX_INPUT_LENGHT)
+			{
+				//Rendering Background
+				renderSurface = SDL_LoadBMP("dialog.bmp");
+				renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
+				SDL_FreeSurface(renderSurface);
+				SDL_RenderCopy(renderer, renderTexture, NULL, &BGSize);
+				//rendering WindowText
+				renderSurface = TTF_RenderText_Blended(font, message.c_str(), textColor);
+				renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
+				SDL_FreeSurface(renderSurface);
+				SDL_RenderCopy(renderer, renderTexture, NULL, &WindowTextPosSize);
+				//Rendering user input
+
+				renderSurface = TTF_RenderText_Blended(font, tmp.c_str(), textColor);
+				renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
+				SDL_FreeSurface(renderSurface);
+				SDL_RenderCopy(renderer, renderTexture, NULL, &PosSize);
+				
+
+				if (mouseX > 139 && mouseX<241 && mouseY>159 && mouseY < 191)
+				{
+					SDL_Rect ButtonPos;
+					ButtonPos.h = 30;
+					ButtonPos.w = 100;
+					ButtonPos.x = 140;
+					ButtonPos.y = 160;
+					renderSurface = SDL_LoadBMP("buttonHover.bmp");
+					renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
+					SDL_FreeSurface(renderSurface);
+					SDL_RenderCopy(renderer, renderTexture, NULL, &ButtonPos);
+				}
+
+
+
+				SDL_RenderPresent(renderer);
 			}
 		}
 	}
