@@ -36,36 +36,42 @@ string CCoreDialog::promt(string windowCaption, string message)
 	SDL_Surface* renderSurface;
 	SDL_Texture* renderTexture;
 	SDL_Rect PosSize;
+	SDL_Rect WindowTextPosSize;
 	//BackgroundSize
-	PosSize.h = 200;
-	PosSize.w = 400;
-	PosSize.x = 0;
-	PosSize.y = 0;
-	renderSurface = SDL_LoadBMP("bg.bmp");
+	SDL_Rect BGSize;
+	BGSize.h = 200;
+	BGSize.w = 400;
+	BGSize.x = 0;
+	BGSize.y = 0;
+	renderSurface = SDL_LoadBMP("dialog.bmp");
+	if (renderSurface == NULL)
+	{
+		cout << "error";
+	}
 	renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
 	SDL_FreeSurface(renderSurface);
-	SDL_RenderCopy(renderer, renderTexture, NULL, &PosSize);
+	SDL_RenderCopy(renderer, renderTexture, NULL, &BGSize);
 	//TextColor
-	SDL_Color MyCol;
-	MyCol.b = 0;
-	MyCol.r = 1;
-	MyCol.g = 0;
+	SDL_Color textColor = { 255, 255, 255 };
 	//TextSize
-	PosSize.h = 50;
-	PosSize.w = 200;
-	PosSize.x = 1;
-	PosSize.y = 1;
+	WindowTextPosSize.h = 50;
+	WindowTextPosSize.w = 200;
+	WindowTextPosSize.x = 1;
+	WindowTextPosSize.y = 1;
 	
-	renderSurface = TTF_RenderText_Blended(font, message.c_str(), MyCol);
+	renderSurface = TTF_RenderText_Blended(font, message.c_str(), textColor);
 	renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
 	SDL_FreeSurface(renderSurface);
-	SDL_RenderCopy(renderer, renderTexture, NULL, &PosSize);
+	SDL_RenderCopy(renderer, renderTexture, NULL, &WindowTextPosSize);
 	SDL_RenderPresent(renderer);
+
+
+
 	//Ausgabe des Keys
-	PosSize.h = 50;
-	PosSize.w = 100;
-	PosSize.x = 1;
-	PosSize.y = 125;
+	PosSize.h = 20;
+	PosSize.w = 10;
+	PosSize.x = 75;
+	PosSize.y = 110;
 	bool quitEvent = false;
 	string tmp = "";
 	while (!quitEvent)
@@ -82,22 +88,28 @@ string CCoreDialog::promt(string windowCaption, string message)
 				{
 					SDL_RenderClear(renderer);
 					tmp += ev.key.keysym.sym;
-					renderSurface = SDL_LoadBMP("bg.bmp");
+					//Rendering Background
+					renderSurface = SDL_LoadBMP("dialog.bmp");
+					renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
+					SDL_FreeSurface(renderSurface);
+					SDL_RenderCopy(renderer, renderTexture, NULL, &BGSize);
+					//rendering WindowText
+					renderSurface = TTF_RenderText_Blended(font, message.c_str(), textColor);
+					renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
+					SDL_FreeSurface(renderSurface);
+					SDL_RenderCopy(renderer, renderTexture, NULL, &WindowTextPosSize);
+					//Rendering user input
+					renderSurface = TTF_RenderText_Blended(font, tmp.c_str(), textColor);
 					renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
 					SDL_FreeSurface(renderSurface);
 					SDL_RenderCopy(renderer, renderTexture, NULL, &PosSize);
-					renderSurface = TTF_RenderText_Blended(font, tmp.c_str(), MyCol);
-					renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
-					SDL_FreeSurface(renderSurface);
-					SDL_RenderCopy(renderer, renderTexture, NULL, &PosSize);
-					PosSize.w += 51;
+					PosSize.w += 10;
 					SDL_RenderPresent(renderer);
 				}
 			}
 		}
 	}
 
-	//Muss noch gebessert werden, muss vernünftig terminiert werden
 	SDL_DestroyWindow(window);
 
 	return tmp;
