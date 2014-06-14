@@ -1,5 +1,9 @@
 #include "CoreDialog.h"
+#include <Windows.h>
 #include <iostream>
+#include <irrKlang.h>
+using namespace irrklang;
+#pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
 
 #define MAX_INPUT_LENGHT 25
 
@@ -24,6 +28,12 @@ string CCoreDialog::promt(string windowCaption, string message)
 	{
 		system("pause");
 		exit(1);
+	}
+	ISoundEngine* soundEngine = createIrrKlangDevice();
+
+	if (!soundEngine)
+	{
+		return 0; // error starting up the engine
 	}
 
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -160,7 +170,8 @@ string CCoreDialog::promt(string windowCaption, string message)
 	}
 
 	SDL_DestroyWindow(window);
-
+	soundEngine->play2D("boing.ogg");
+	Sleep(200);
 	return tmp;
 }
 

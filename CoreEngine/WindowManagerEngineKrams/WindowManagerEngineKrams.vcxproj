@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>C:\libs\SDL\lib\x86;C:\libs\SDL2_image\lib\x86;C:\libs\sdl_ttf\lib\x86;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\libs\SDL\include;C:\libs\SDL2_image\include;C:\libs\sdl_ttf\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\libs\irrKlang-1.5.0\lib\Win32-visualStudio;C:\libs\SDL\lib\x86;C:\libs\SDL2_image\lib\x86;C:\libs\sdl_ttf\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\libs\irrKlang-1.5.0\include;C:\libs\SDL\include;C:\libs\SDL2_image\include;C:\libs\sdl_ttf\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -64,7 +64,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;libfreetype-6.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;libfreetype-6.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
