@@ -1,2 +1,0 @@
-Todo:
-Filehandling config (AUflösung usw)
