@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="MouseHoverCoordinates.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>

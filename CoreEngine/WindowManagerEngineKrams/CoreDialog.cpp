@@ -91,6 +91,17 @@ string CCoreDialog::promt(string windowCaption, string message)
 	{
 		while (SDL_PollEvent(&ev) != 0)
 		{
+			//Handle mouebutton click
+			if (ev.type == SDL_MOUSEBUTTONDOWN)
+			{
+				int x = ev.button.x; 
+				int y = ev.button.y;
+				if (x > 139 && x<241 && y>159 && y < 191)
+				{
+					quitEvent = true;
+				}
+			}
+			//Handle keyboard
 			if (ev.type == SDL_KEYUP)
 			{
 				if (ev.key.keysym.scancode == 225)
