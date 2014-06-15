@@ -16,6 +16,7 @@ private:
 
 public:
 	CCoreObject(SDL_Rect position, SDL_Texture* normalTexture, SDL_Texture* hoverTexture, string objectType);
+	CCoreObject();
 	void changeTexture(SDL_Texture* newTexture);
 	string getType();
 	~CCoreObject();

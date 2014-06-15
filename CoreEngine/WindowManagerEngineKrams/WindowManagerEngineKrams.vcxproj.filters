@@ -55,6 +55,9 @@
     <ClInclude Include="CoreEngine.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectTemplate.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

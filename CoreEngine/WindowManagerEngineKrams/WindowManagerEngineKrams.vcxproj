@@ -100,6 +100,7 @@
     <ClInclude Include="CoreObjectHelper.h" />
     <ClInclude Include="CoreRenderWindow.h" />
     <ClInclude Include="CoreWindow.h" />
+    <ClInclude Include="ObjectTemplate.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="SDL_ttf.h" />
     <ClInclude Include="stdafx.h" />
