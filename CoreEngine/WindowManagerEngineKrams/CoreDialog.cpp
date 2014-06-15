@@ -65,9 +65,9 @@ string CCoreDialog::promt(string windowCaption, string message)
 	//TextColor
 	SDL_Color textColor = { 255, 255, 255 };
 	//TextSize
-	WindowTextPosSize.h = 50;
-	WindowTextPosSize.w = 200;
-	WindowTextPosSize.x = 1;
+	WindowTextPosSize.h = 30;
+	WindowTextPosSize.w = 30 * message.length();
+	WindowTextPosSize.x = 10; // ((message.length()/2)*30);
 	WindowTextPosSize.y = 1;
 	
 	renderSurface = TTF_RenderText_Blended(font, message.c_str(), textColor);

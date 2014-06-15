@@ -25,9 +25,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="CoreWindowManager.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="CoreObjectHelper.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -55,15 +52,15 @@
     <ClInclude Include="SDL_ttf.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="CoreEngine.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="WindowManagerEngineKrams.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="CoreWindowManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="CoreObjectHelper.cpp">
@@ -89,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="SDL_ttf.c">
       <Filter>Headerdateien</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreEngine.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

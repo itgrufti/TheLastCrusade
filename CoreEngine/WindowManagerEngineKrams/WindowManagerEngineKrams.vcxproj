@@ -94,12 +94,12 @@
   <ItemGroup>
     <ClInclude Include="CoreButton.h" />
     <ClInclude Include="CoreDialog.h" />
+    <ClInclude Include="CoreEngine.h" />
     <ClInclude Include="CoreMenu.h" />
     <ClInclude Include="CoreObject.h" />
     <ClInclude Include="CoreObjectHelper.h" />
     <ClInclude Include="CoreRenderWindow.h" />
     <ClInclude Include="CoreWindow.h" />
-    <ClInclude Include="CoreWindowManager.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="SDL_ttf.h" />
     <ClInclude Include="stdafx.h" />
@@ -108,12 +108,12 @@
   <ItemGroup>
     <ClCompile Include="CoreButton.cpp" />
     <ClCompile Include="CoreDialog.cpp" />
+    <ClCompile Include="CoreEngine.cpp" />
     <ClCompile Include="CoreMenu.cpp" />
     <ClCompile Include="CoreObject.cpp" />
     <ClCompile Include="CoreObjectHelper.cpp" />
     <ClCompile Include="CoreRenderWindow.cpp" />
     <ClCompile Include="CoreWindow.cpp" />
-    <ClCompile Include="CoreWindowManager.cpp" />
     <ClCompile Include="SDL_ttf.c" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="WindowManagerEngineKrams.cpp" />

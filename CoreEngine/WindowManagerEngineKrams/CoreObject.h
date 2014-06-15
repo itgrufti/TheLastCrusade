@@ -5,20 +5,19 @@
 using namespace std;
 class CCoreObject
 {
+protected:
+	int m_iID;
+	SDL_Rect m_sdlObjectPos;
+	SDL_Texture* m_sdslTexture;
+	SDL_Texture* m_sdlHoverTexture;
+	string m_sObjectType;
 private:
 	//static int m_iIDCounter;
-	int m_iID;
-	string m_sName;
-	bool m_bIsClicked;
-	Position m_posObjectPos;
-	Position m_posEndRenderPos;
-	SDL_Texture* m_sdslTexture;
-	void* m_vptrFunctionPressed;
+
 public:
-	CCoreObject(void* fnPtr, Position pos, Position endPos, SDL_Texture* texture, string name);
-	CCoreObject::CCoreObject();
-	void handleClick();
+	CCoreObject(SDL_Rect position, SDL_Texture* normalTexture, SDL_Texture* hoverTexture, string objectType);
 	void changeTexture(SDL_Texture* newTexture);
+	string getType();
 	~CCoreObject();
 };
 

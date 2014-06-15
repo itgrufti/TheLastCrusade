@@ -8,7 +8,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	cout << CCoreDialog::promt("Neuer Held", "Wie moechtet Ihr heissen?") << endl;
+	cout << CCoreDialog::promt("Neuer Held", "Deine Mudda") << endl;
 	system("pause");
 	return 0;
 }
