@@ -19,6 +19,7 @@ public:
 	CCoreObject();
 	void changeTexture(SDL_Texture* newTexture);
 	string getType();
+	int getID();
 	~CCoreObject();
 };
 

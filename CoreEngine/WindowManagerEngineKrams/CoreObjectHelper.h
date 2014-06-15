@@ -13,6 +13,7 @@ public:
 	CCoreObjectHelper();
 	bool loadFromFile();						//Loads templates from file
 	int createObject(string name);				//Creates an unique object, returns ID if no template is found return 9999
+	bool deleteObject(int index);
 	~CCoreObjectHelper();
 };
 

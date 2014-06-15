@@ -18,6 +18,7 @@ public:
 	int createMenueWindow(string caption, string backgroundGfx);
 	int createRenderWindow(string caption, string backgroundGfx, string overlayGfx);
 	bool addObject(int windowID, int objectID);
+	void playSound(string fileName);
 	bool deleteWindow(int index);
 
 	~CCoreEngine();

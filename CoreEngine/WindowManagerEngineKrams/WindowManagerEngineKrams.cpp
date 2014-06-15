@@ -3,12 +3,17 @@
 #include "SDL.h"
 #include "stdafx.h"
 #include "CoreDialog.h"
+#include "CoreEngine.h"
+#include "CoreObjectHelper.h"
 #include <iostream>
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	cout << CCoreDialog::promt("Neuer Held", "Deine Mudda") << endl;
+	string userInput = CCoreDialog::promt("MP3 Player", "Welche OGG?");
+	CCoreEngine* myEngine = new CCoreEngine();
+	CCoreObjectHelper* myObjectHelper = new CCoreObjectHelper();
+	myEngine->playSound(userInput);
 	system("pause");
 	return 0;
 }

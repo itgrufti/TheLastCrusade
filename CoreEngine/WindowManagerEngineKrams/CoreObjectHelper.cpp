@@ -9,9 +9,14 @@ CCoreObjectHelper::CCoreObjectHelper()
 
 bool CCoreObjectHelper::loadFromFile()
 {
+	/*
 	ifstream file;
 	file.open("object.cof", ios::in);
 	string line;
+	if (!file.good())
+	{
+		return false;
+	}
 	ObjectTemplate* workTemplate;
 	string tmp[4];
 	int pos;
@@ -33,9 +38,12 @@ bool CCoreObjectHelper::loadFromFile()
 		workTemplate->objectType = tmp[3];
 		m_vObjectTemplates.push_back(workTemplate);
 	}
+	*/
+	return true;
 }
 int CCoreObjectHelper::createObject(string name)
 {
+	
 	for (int i = 0; i < m_vObjectTemplates.size(); i++)
 	{
 		if (m_vObjectTemplates.at(i)->name == name)
@@ -57,8 +65,35 @@ int CCoreObjectHelper::createObject(string name)
 			}
 		}
 	}
+	
 	//No template found, returning error
 	return 9999;
+}
+bool CCoreObjectHelper::deleteObject(int index)
+{
+	/*
+	for (int i = 0; i < m_vObjectList.size(); i++)
+	{
+		if (m_vObjectList.at(i).getID() == index)
+		{
+			vector<CCoreObject> tmp;
+			for (int j = 0; j < m_vObjectList.size(); j++)
+			{
+				tmp.push_back(m_vObjectList.at(j));
+			}
+			m_vObjectList.clear();
+			for (int j = 0; j < m_vObjectList.size(); j++)
+			{
+				if (j != i)
+				{
+					m_vObjectList.push_back(tmp.at(j));
+				}
+			}
+			return true;
+		}
+	}
+	*/
+	return false;
 }
 CCoreObjectHelper::~CCoreObjectHelper()
 {
