@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>C:\libs\irrKlang-1.5.0\lib\Win32-visualStudio;C:\libs\SDL\lib\x86;C:\libs\SDL2_image\lib\x86;C:\libs\sdl_ttf\lib\x86;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\libs\irrKlang-1.5.0\include;C:\libs\SDL\include;C:\libs\SDL2_image\include;C:\libs\sdl_ttf\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\libs\boost_1_55_0\libs;C:\libs\irrKlang-1.5.0\lib\Win32-visualStudio;C:\libs\SDL\lib\x86;C:\libs\SDL2_image\lib\x86;C:\libs\sdl_ttf\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\libs\boost_1_55_0\;C:\libs\irrKlang-1.5.0\include;C:\libs\SDL\include;C:\libs\SDL2_image\include;C:\libs\sdl_ttf\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -95,10 +95,8 @@
     <ClInclude Include="CoreButton.h" />
     <ClInclude Include="CoreDialog.h" />
     <ClInclude Include="CoreEngine.h" />
-    <ClInclude Include="CoreMenu.h" />
     <ClInclude Include="CoreObject.h" />
     <ClInclude Include="CoreObjectHelper.h" />
-    <ClInclude Include="CoreRenderWindow.h" />
     <ClInclude Include="CoreWindow.h" />
     <ClInclude Include="ObjectTemplate.h" />
     <ClInclude Include="Position.h" />
@@ -110,10 +108,8 @@
     <ClCompile Include="CoreButton.cpp" />
     <ClCompile Include="CoreDialog.cpp" />
     <ClCompile Include="CoreEngine.cpp" />
-    <ClCompile Include="CoreMenu.cpp" />
     <ClCompile Include="CoreObject.cpp" />
     <ClCompile Include="CoreObjectHelper.cpp" />
-    <ClCompile Include="CoreRenderWindow.cpp" />
     <ClCompile Include="CoreWindow.cpp" />
     <ClCompile Include="SDL_ttf.c" />
     <ClCompile Include="stdafx.cpp" />

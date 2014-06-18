@@ -12,6 +12,21 @@ CCoreEngine::CCoreEngine()
 		system("pause");
 		exit(1);
 	}
+	if (SDL_Init(SDL_INIT_EVERYTHING))
+	{
+		system("pause");
+		exit(1);
+	}
+	if (TTF_Init() < 0)
+	{
+		system("pause");
+		exit(1);
+	}
+	if (IMG_Init(IMG_INIT_PNG) < 0)
+	{
+		system("pause");
+		exit(1);
+	}
 }
 
 int CCoreEngine::createMenueWindow(string caption, string backgroundGfx)

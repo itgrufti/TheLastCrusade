@@ -1,6 +1,9 @@
 #pragma once
 #include "CoreWindow.h"
 #include "CoreObject.h"
+#include <SDL.h>
+#include "SDL_ttf.h"
+#include <SDL_image.h>
 #include <irrKlang.h>
 #include <vector>
 #include <string>

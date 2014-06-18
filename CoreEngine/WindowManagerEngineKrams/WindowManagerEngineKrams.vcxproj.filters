@@ -31,12 +31,6 @@
     <ClInclude Include="CoreWindow.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="CoreRenderWindow.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="CoreMenu.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="CoreObject.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -70,12 +64,6 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="CoreWindow.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="CoreRenderWindow.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="CoreMenu.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="CoreObject.cpp">
