@@ -12,7 +12,6 @@ using namespace irrklang;
 class CCoreWindow
 {
 protected:
-	string m_sWindowType;
 	ISoundEngine* m_irrAudioEngine;
 	vector<CCoreObject*> m_vMainContentObjects;
 	vector<CCoreObject*> m_vOverlayObjects;
@@ -34,7 +33,6 @@ public:
 	CCoreWindow(int siseX, int sizeY, ISoundEngine* audioEngine, string title);
 	int getLastClickedObject();
 	int getLastClickedButton();
-	virtual string getWindowType();
 	~CCoreWindow();
 };
 

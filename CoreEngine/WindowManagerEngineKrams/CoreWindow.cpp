@@ -15,19 +15,39 @@ CCoreWindow::CCoreWindow(int sizeX, int sizeY, ISoundEngine* audioEngine, string
 		system("pause");
 		exit(1);
 	}
+	//************IMPROVEMENTS**************//
+	// Read the font name from file,		//
+	// Prompt error with prompt				//
+	//**************************************//
 	m_sdlMainFont = TTF_OpenFont("arial.ttf", 50);
 	m_irrAudioEngine = audioEngine;
 	m_iLastClickedObjectID = 0;
 	m_booRenderThread = new boost::thread(boost::bind(&CCoreWindow::render, this));
 	m_booInteractionthread = new boost::thread(boost::bind(&CCoreWindow::handleHoverClick, this));
 }
-string CCoreWindow::getWindowType()
-{
-	return m_sWindowType;
-}
+
 int CCoreWindow::getLastClickedObject()
 {
 	return m_iLastClickedObjectID;
+}
+
+
+
+void CCoreWindow::renderOverlay()
+{
+
+}
+void CCoreWindow::renderMainContent()
+{
+
+}
+
+
+
+
+int CCoreWindow::getLastClickedButton()
+{
+	return m_iLastClickedButton;
 }
 
 void CCoreWindow::handleHoverClick()
@@ -124,7 +144,12 @@ void CCoreWindow::handleHoverClick()
 }
 void CCoreWindow::render()
 {
-
+	//Hier dann der Sleep wegen FPS begrenzung
+	while (true)
+	{
+		renderMainContent();
+		renderOverlay();
+	}
 }
 
 CCoreWindow::~CCoreWindow()

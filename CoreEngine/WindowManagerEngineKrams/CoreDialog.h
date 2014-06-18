@@ -9,6 +9,7 @@ class CCoreDialog
 public:
 	CCoreDialog();
 	static string promt(string windowCaption, string message);
+	static void printMessage(string windowCaption, string message);
 	~CCoreDialog();
 };
 
