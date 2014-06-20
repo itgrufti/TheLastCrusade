@@ -1,4 +1,6 @@
+#pragma once
 #include "CoreWindow.h"
+#include "CoreDialog.h"
 
 
 CCoreWindow::CCoreWindow(int sizeX, int sizeY, ISoundEngine* audioEngine, string title)
@@ -6,13 +8,13 @@ CCoreWindow::CCoreWindow(int sizeX, int sizeY, ISoundEngine* audioEngine, string
 	m_sdlWindowHandler = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, sizeX, sizeY, NULL);
 	if (m_sdlWindowHandler == NULL)
 	{
-		system("pause");
+		CCoreDialog::printMessage("ERROR", "Cant create window");
 		exit(1);
 	}
 	m_sdlMainRenderer = SDL_CreateRenderer(m_sdlWindowHandler, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (m_sdlMainRenderer == NULL)
 	{
-		system("pause");
+		CCoreDialog::printMessage("ERROR", "Cant create renderer");
 		exit(1);
 	}
 	//************IMPROVEMENTS**************//
@@ -79,7 +81,7 @@ void CCoreWindow::handleHoverClick()
 					}
 					else
 					{
-						if (m_vMainContentObjects.at(i)->getHoverTexture() == m_vMainContentObjects.at(i)->getActualTexture())
+						if (m_vMainContentObjects.at(i)->getHoverTexture() == m_vMainContentObjects.at(i)->getTexture())
 						{
 							m_vMainContentObjects.at(i)->changeTexture(m_vMainContentObjects.at(i)->getTexture());
 						}
@@ -99,7 +101,7 @@ void CCoreWindow::handleHoverClick()
 					}
 					else
 					{
-						if (m_vMainContentObjects.at(i)->getHoverTexture() == m_vMainContentObjects.at(i)->getActualTexture())
+						if (m_vMainContentObjects.at(i)->getHoverTexture() == m_vMainContentObjects.at(i)->getTexture())
 						{
 							m_vMainContentObjects.at(i)->changeTexture(m_vMainContentObjects.at(i)->getTexture());
 						}

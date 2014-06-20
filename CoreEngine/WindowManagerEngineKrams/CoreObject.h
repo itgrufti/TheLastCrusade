@@ -20,7 +20,6 @@ public:
 	CCoreObject();
 	void changeTexture(SDL_Texture* newTexture);
 	void setPosition(SDL_Rect newPosition);
-	SDL_Texture* getActualTexture();
 	SDL_Rect getPosition();
 	string getType();
 	int getID();

@@ -212,6 +212,139 @@ string CCoreDialog::promt(string windowCaption, string message)
 	Sleep(200);
 	return tmp;
 }
+void CCoreDialog::printMessage(string windowCaption, string message)
+{
+	if (SDL_Init(SDL_INIT_EVERYTHING))
+	{
+		cout << "SDL Error, original message: " << message << endl;
+		system("pause");
+		exit(1);
+	}
+	if (TTF_Init() < 0)
+	{
+		cout << "SDL Error, original message: " << message << endl;
+		system("pause");
+		exit(1);
+	}
+	SDL_Window* window = SDL_CreateWindow(windowCaption.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 400, 200, NULL);
+	if (window == NULL)
+	{
+		cout << "SDL Error, original message: " << message << endl;
+		system("pause");
+		exit(1);
+	}
+	ISoundEngine* soundEngine = createIrrKlangDevice();
+
+	if (!soundEngine)
+	{
+		cout << "Audio Error, original message: " << message << endl;
+		exit(1); // error starting up the engine
+	}
+
+	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	SDL_Event ev;
+	if (renderer == NULL)
+	{
+		cout << "SDL Error, original message: " << message << endl;
+		system("pause");
+		exit(1);
+	}
+	TTF_Font* font = TTF_OpenFont("arial.ttf", 50);
+	SDL_Surface* renderSurface;
+	SDL_Texture* renderTexture;
+	SDL_Rect PosSize;
+	SDL_Rect WindowTextPosSize;
+	//BackgroundSize
+	SDL_Rect BGSize;
+	BGSize.h = 200;
+	BGSize.w = 400;
+	BGSize.x = 0;
+	BGSize.y = 0;
+	renderSurface = SDL_LoadBMP("message.bmp");
+	if (renderSurface == NULL)
+	{
+		cout << "Warning: Background not found: " << endl;
+	}
+	renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
+	SDL_FreeSurface(renderSurface);
+	SDL_RenderCopy(renderer, renderTexture, NULL, &BGSize);
+	//TextColor
+	SDL_Color textColor = { 255, 255, 255 };
+	//TextSize
+	WindowTextPosSize.h = 30;
+	WindowTextPosSize.w = 30 * message.length();
+	WindowTextPosSize.x = 10; // ((message.length()/2)*30);
+	WindowTextPosSize.y = 1;
+
+	renderSurface = TTF_RenderText_Blended(font, message.c_str(), textColor);
+	renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
+	SDL_FreeSurface(renderSurface);
+	SDL_RenderCopy(renderer, renderTexture, NULL, &WindowTextPosSize);
+	SDL_RenderPresent(renderer);
+
+	bool quitEvent = false;
+	int mouseX = 0;
+	int mouseY = 0;
+	while (!quitEvent)
+	{
+		while (SDL_PollEvent(&ev) != 0)
+		{
+			if (ev.type == SDL_MOUSEMOTION)
+			{
+				mouseX = ev.motion.x;
+				mouseY = ev.motion.y;
+
+			}
+			//Handle mouebutton click
+			if (ev.type == SDL_MOUSEBUTTONDOWN)
+			{
+				int x = ev.button.x;
+				int y = ev.button.y;
+				if (x > 139 && x<241 && y>159 && y < 191)
+				{
+					quitEvent = true;
+				}
+			}
+			//Handle keyboard
+			if (ev.type == SDL_KEYDOWN)
+			{
+				if (ev.key.keysym.scancode == 40)
+				{
+					//Enter
+					quitEvent = true;
+				}
+			}
+
+			//Rendering Background
+			renderSurface = SDL_LoadBMP("message.bmp");
+			renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
+			SDL_FreeSurface(renderSurface);
+			SDL_RenderCopy(renderer, renderTexture, NULL, &BGSize);
+			//rendering WindowText
+			renderSurface = TTF_RenderText_Blended(font, message.c_str(), textColor);
+			renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
+			SDL_FreeSurface(renderSurface);
+			SDL_RenderCopy(renderer, renderTexture, NULL, &WindowTextPosSize);
+
+			if (mouseX > 139 && mouseX<241 && mouseY>159 && mouseY < 191)
+			{
+				SDL_Rect ButtonPos;
+				ButtonPos.h = 30;
+				ButtonPos.w = 100;
+				ButtonPos.x = 140;
+				ButtonPos.y = 160;
+				renderSurface = SDL_LoadBMP("buttonHover.bmp");
+				renderTexture = SDL_CreateTextureFromSurface(renderer, renderSurface);
+				SDL_FreeSurface(renderSurface);
+				SDL_RenderCopy(renderer, renderTexture, NULL, &ButtonPos);
+			}
+			SDL_RenderPresent(renderer);
+		}
+	}
+	SDL_DestroyWindow(window);
+	soundEngine->play2D("boing.ogg");
+	Sleep(200);
+}
 
 CCoreDialog::~CCoreDialog()
 {
